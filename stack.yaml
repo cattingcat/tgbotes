@@ -1,0 +1,17 @@
+#resolver: nightly-2020-09-05
+resolver: lts-16.6
+extra-deps:
+  - hasql-th-0.4.0.8@sha256:e77af01c354fcebb0fc8358a4bb2f7b361329bce28f783d8d6b17fbd5fa43279,2245
+  - telegram-bot-simple-0.3.1@sha256:60f9c76592a3baaf7a98b7a3bd9d6dee3c2935886df34a06bc979382e7738969,3499
+
+  - postgresql-syntax-0.3.0.3@sha256:b93a73c388811e331327561d85ed268f232be6c7f8f90ff27b2091c64c6aea90,4170
+  - servant-multipart-0.11.6@sha256:1863862e507dd6f672b4c9d2c6d87d4faec19686ced3d828d712ada07536cddb,2655
+
+  - fast-builder-0.1.2.0@sha256:d01db8a5f1ac262e2db0375c47e46660c67ad4145bef64cc7303ade096e461ee,2801
+  - headed-megaparsec-0.2@sha256:53e0fca4b30bc568f0dfae5b97abe7967939c8a9ee00f30bc99936d75181dd72,1566
+
+  - megaparsec-9.0.0
+
+allow-newer: true
+packages:
+- .

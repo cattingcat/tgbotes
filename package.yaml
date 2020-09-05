@@ -1,0 +1,121 @@
+name:                tgbotes
+version:             0.1.0.0
+github:              "Github username here/tgbotes"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "Author email here"
+copyright:           "2019 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+description:         Please see the README on GitHub at <https://github.com/Github username here/tgbotes#readme>
+
+default-extensions:
+  - NoImplicitPrelude
+  - MultiWayIf
+  - LambdaCase
+  - ViewPatterns
+  - OverloadedStrings
+  - NegativeLiterals
+  - NumDecimals
+  - BinaryLiterals
+  - HexFloatLiterals
+  - NumericUnderscores
+  - PartialTypeSignatures
+  - NamedWildCards
+  - ApplicativeDo
+  - Arrows
+  - PostfixOperators
+  - TupleSections
+  - DuplicateRecordFields
+  - NamedFieldPuns
+  - RecordWildCards
+  - DerivingStrategies
+  - EmptyDataDeriving
+  - StandaloneDeriving
+  - GeneralizedNewtypeDeriving
+  - DeriveGeneric
+  - DeriveFunctor
+  - DeriveAnyClass
+  - DerivingVia
+  - BangPatterns
+  - PatternSynonyms
+  - EmptyDataDecls
+  - TypeOperators
+  - LiberalTypeSynonyms
+  - DefaultSignatures
+  - GADTs
+  - MultiParamTypeClasses
+  - FunctionalDependencies
+  - KindSignatures
+  - DataKinds
+  - ScopedTypeVariables
+  - TypeApplications
+  - InstanceSigs
+  - TypeSynonymInstances
+  - FlexibleInstances
+  - FlexibleContexts
+  - ConstrainedClassMethods
+  - TypeFamilies
+  - ConstraintKinds
+  - RankNTypes
+  - PolyKinds
+  - ImplicitParams
+  - AllowAmbiguousTypes
+  - QuasiQuotes
+
+dependencies:
+- base >= 4.7 && < 5
+- relude
+- safe
+- cond
+- extra
+- mtl
+- text
+- vector
+- safe-exceptions
+- semigroupoids
+- comonad
+- telegram-bot-simple
+- hasql
+- hasql-th
+- hasql-pool
+
+library:
+  source-dirs: src
+  ghc-options:
+    -Weverything
+    -Wcompat
+    -Wno-safe
+    -Wno-unused-top-binds
+    -Wno-missing-import-lists
+    -Wno-implicit-prelude
+    -Wno-unsafe
+    -Wno-missing-safe-haskell-mode
+    -Wno-missing-local-signatures
+    -Wno-all-missed-specialisations
+    -optP-Wno-nonportable-include-path
+
+executables:
+  tgbotes-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - tgbotes
+
+tests:
+  tgbotes-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - tgbotes
