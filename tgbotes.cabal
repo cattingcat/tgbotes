@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: aa9b4f045af4c022677c7e8c4affb05425aaca74581564026577e65d2e6951bd
+-- hash: 7435b805800eb2293cf09bb964ef9735847a01b00beba6986938ac7a7ab5ee27
 
 name:           tgbotes
 version:        0.1.0.0
@@ -37,8 +37,9 @@ library
       Db.BotDb
       Db.Defaults
       Db.TestDb
-      Lib
       Web.Run
+      Web.Server
+      Web.Types
   other-modules:
       Paths_tgbotes
   hs-source-dirs:
@@ -46,11 +47,13 @@ library
   default-extensions: NoImplicitPrelude MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
   ghc-options: -Weverything -Wcompat -Wno-safe -Wno-unused-top-binds -Wno-missing-import-lists -Wno-implicit-prelude -Wno-unsafe -Wno-missing-safe-haskell-mode -Wno-missing-local-signatures -Wno-all-missed-specialisations -optP-Wno-nonportable-include-path
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , comonad
     , cond
     , envy
     , extra
+    , fmt
     , hasql
     , hasql-pool
     , hasql-th
@@ -60,9 +63,13 @@ library
     , safe
     , safe-exceptions
     , semigroupoids
+    , servant
+    , servant-server
     , telegram-bot-simple
     , text
     , vector
+    , wai
+    , warp
   default-language: Haskell2010
 
 executable tgbotes-exe
@@ -74,11 +81,13 @@ executable tgbotes-exe
   default-extensions: NoImplicitPrelude MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , comonad
     , cond
     , envy
     , extra
+    , fmt
     , hasql
     , hasql-pool
     , hasql-th
@@ -88,10 +97,14 @@ executable tgbotes-exe
     , safe
     , safe-exceptions
     , semigroupoids
+    , servant
+    , servant-server
     , telegram-bot-simple
     , text
     , tgbotes
     , vector
+    , wai
+    , warp
   default-language: Haskell2010
 
 test-suite tgbotes-test
@@ -104,11 +117,13 @@ test-suite tgbotes-test
   default-extensions: NoImplicitPrelude MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , comonad
     , cond
     , envy
     , extra
+    , fmt
     , hasql
     , hasql-pool
     , hasql-th
@@ -118,8 +133,12 @@ test-suite tgbotes-test
     , safe
     , safe-exceptions
     , semigroupoids
+    , servant
+    , servant-server
     , telegram-bot-simple
     , text
     , tgbotes
     , vector
+    , wai
+    , warp
   default-language: Haskell2010

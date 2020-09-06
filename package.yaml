@@ -78,8 +78,14 @@ dependencies:
 - safe-exceptions
 - semigroupoids
 - comonad
+- fmt
 - envy
 - optparse-applicative
+- aeson
+- servant
+- servant-server
+- wai
+- warp
 - telegram-bot-simple
 - hasql
 - hasql-th
