@@ -1,20 +1,21 @@
 module Main (main) where
 import Relude
 import App.Types
-import Bot.Defaults
-import Bot.Run (run)
-import Db.Defaults
-import Db.TestDb (test)
+import App.WebApp
+import qualified Bot.Run as Bot
+import qualified Web.Run as Web
+import qualified Db.TestDb as Db
 
 main :: IO ()
-main = runApp app (AppConfig
-      defaultHost
-      defaultPort
-      defaultUser
-      defaultPassword
-      defaultDbName
-      defaultTgToken)
+main = do
+  confMaybe <- getConfig
+  case  confMaybe of
+    Nothing -> putStrLn "Incorrect config"
+    Just c -> runApp app c
+  putStrLn "Press <enter> to stop"
+  _ <- getLine
+  pure ()
   where
     app = do
-      test
-      run
+      Db.test
+      runWebApp (Bot.run >> Web.run)

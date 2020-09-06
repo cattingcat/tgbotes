@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 619e2d03487fefcd4790d6b7efeef28273f69f04aaab2acbd23f2952600f1830
+-- hash: aa9b4f045af4c022677c7e8c4affb05425aaca74581564026577e65d2e6951bd
 
 name:           tgbotes
 version:        0.1.0.0
@@ -28,8 +28,8 @@ source-repository head
 library
   exposed-modules:
       App.Types
+      App.WebApp
       Bot.Actions
-      Bot.Defaults
       Bot.PatternsStorage
       Bot.ReplyBot
       Bot.Run
@@ -37,6 +37,8 @@ library
       Db.BotDb
       Db.Defaults
       Db.TestDb
+      Lib
+      Web.Run
   other-modules:
       Paths_tgbotes
   hs-source-dirs:
@@ -47,11 +49,13 @@ library
       base >=4.7 && <5
     , comonad
     , cond
+    , envy
     , extra
     , hasql
     , hasql-pool
     , hasql-th
     , mtl
+    , optparse-applicative
     , relude
     , safe
     , safe-exceptions
@@ -73,11 +77,13 @@ executable tgbotes-exe
       base >=4.7 && <5
     , comonad
     , cond
+    , envy
     , extra
     , hasql
     , hasql-pool
     , hasql-th
     , mtl
+    , optparse-applicative
     , relude
     , safe
     , safe-exceptions
@@ -101,11 +107,13 @@ test-suite tgbotes-test
       base >=4.7 && <5
     , comonad
     , cond
+    , envy
     , extra
     , hasql
     , hasql-pool
     , hasql-th
     , mtl
+    , optparse-applicative
     , relude
     , safe
     , safe-exceptions

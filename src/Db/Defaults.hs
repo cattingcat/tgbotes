@@ -1,9 +1,8 @@
 module Db.Defaults (
-defaultHost,
-defaultPort,
-defaultUser,
-defaultDbName,
-defaultPassword
+  defaultHost,
+  defaultPort,
+  defaultUser,
+  defaultDbName
 ) where
 import Relude
 
@@ -18,6 +17,3 @@ defaultUser = "admin"
 
 defaultDbName :: ByteString
 defaultDbName = "rdb"
-
-defaultPassword :: ByteString
-defaultPassword = "F%HzxKnu9|X7ec24Z)"

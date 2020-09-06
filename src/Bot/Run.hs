@@ -2,14 +2,14 @@ module Bot.Run (run) where
 import Relude
 import Telegram.Bot.Simple
 import Telegram.Bot.API
-import App.Types
+import App.WebApp
 import Bot.ReplyBot
 
-run :: App ()
+run :: WebApp ()
 run = do
-  token <- asks (\AppConfig{tgToken} -> tgToken)
+  token <- asks (\WebAppConfig{tgToken} -> tgToken)
   liftIO $ do
     putStrLn "Bot.Run"
     env <- defaultTelegramClientEnv token
     --  startBot_ (conversationBot updateChatId replyBot) env
-    startBot_ replyBot env
+    startBotAsync_ replyBot env

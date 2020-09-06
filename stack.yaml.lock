@@ -10,42 +10,42 @@ packages:
       size: 864
       sha256: d3975fb5fdfc16c22ae5296a1d720ffa4cfc3661117d7eba0ad1232e4be527d6
   original:
-    hackage: hasql-th-0.4.0.8@sha256:e77af01c354fcebb0fc8358a4bb2f7b361329bce28f783d8d6b17fbd5fa43279,2245
+    hackage: hasql-th-0.4.0.8
 - completed:
     hackage: telegram-bot-simple-0.3.1@sha256:60f9c76592a3baaf7a98b7a3bd9d6dee3c2935886df34a06bc979382e7738969,3499
     pantry-tree:
       size: 1835
       sha256: 032a6714e01fa980f28b40efde94dd150c0dc656ebb3ac1b44ff7df0e338230a
   original:
-    hackage: telegram-bot-simple-0.3.1@sha256:60f9c76592a3baaf7a98b7a3bd9d6dee3c2935886df34a06bc979382e7738969,3499
+    hackage: telegram-bot-simple-0.3.1
 - completed:
     hackage: postgresql-syntax-0.3.0.3@sha256:b93a73c388811e331327561d85ed268f232be6c7f8f90ff27b2091c64c6aea90,4170
     pantry-tree:
       size: 1141
       sha256: 59f0edcb31c8b30432c1fef4107805cc9e20e7cc2e3d5e2f819789c556c6a386
   original:
-    hackage: postgresql-syntax-0.3.0.3@sha256:b93a73c388811e331327561d85ed268f232be6c7f8f90ff27b2091c64c6aea90,4170
+    hackage: postgresql-syntax-0.3.0.3
 - completed:
     hackage: servant-multipart-0.11.6@sha256:1863862e507dd6f672b4c9d2c6d87d4faec19686ced3d828d712ada07536cddb,2655
     pantry-tree:
       size: 386
       sha256: 3d45dc52822a30de2ee524358bf91ad77c041c4385ab75d636effa17e02e351e
   original:
-    hackage: servant-multipart-0.11.6@sha256:1863862e507dd6f672b4c9d2c6d87d4faec19686ced3d828d712ada07536cddb,2655
+    hackage: servant-multipart-0.11.6
 - completed:
     hackage: fast-builder-0.1.2.0@sha256:d01db8a5f1ac262e2db0375c47e46660c67ad4145bef64cc7303ade096e461ee,2801
     pantry-tree:
       size: 1058
       sha256: b38174b316e6609a6a45da8989470556c8450e87f60f294ed709dc50d905de67
   original:
-    hackage: fast-builder-0.1.2.0@sha256:d01db8a5f1ac262e2db0375c47e46660c67ad4145bef64cc7303ade096e461ee,2801
+    hackage: fast-builder-0.1.2.0
 - completed:
     hackage: headed-megaparsec-0.2@sha256:53e0fca4b30bc568f0dfae5b97abe7967939c8a9ee00f30bc99936d75181dd72,1566
     pantry-tree:
       size: 383
       sha256: 4277a2ab79fd6da7cc4fb01c55426322dffe4a53cdf80ef66d033034dc43d109
   original:
-    hackage: headed-megaparsec-0.2@sha256:53e0fca4b30bc568f0dfae5b97abe7967939c8a9ee00f30bc99936d75181dd72,1566
+    hackage: headed-megaparsec-0.2
 - completed:
     hackage: megaparsec-9.0.0@sha256:920d1e469056c746b532333a078c2a9a195fab5e860e0c9734ee92a28c2bfb65,3117
     pantry-tree:

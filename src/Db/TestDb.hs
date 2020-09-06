@@ -7,7 +7,7 @@ import App.Types
 
 test :: App ()
 test = do
-  connStr <- asks (\AppConfig{dbHost, dbPort, dbUser, dbPassword, dbName} -> 
+  connStr <- asks (\MkAppConfig{dbHost, dbPort, dbUser, dbPassword, dbName} -> 
     C.settings dbHost dbPort dbUser dbPassword dbName)
     
   liftIO $ do
