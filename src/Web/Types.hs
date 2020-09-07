@@ -26,4 +26,4 @@ data ReplyPattern = ReplyPattern
 type ServerAPI = "users" :> "list-all" :> Get '[JSON] [User]
             :<|> "list-all" :> "users" :> Get '[JSON] [User]
             :<|> "patterns" :> Capture "chatId" Int64 :> Get '[JSON] [ReplyPattern]
-            :<|> Raw
+--            :<|> Raw

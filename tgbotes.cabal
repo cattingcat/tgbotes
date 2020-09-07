@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7435b805800eb2293cf09bb964ef9735847a01b00beba6986938ac7a7ab5ee27
+-- hash: e7e8008daa8b9f831f0a67886ecede5abc59f7a56ab417e3155cdfe817bcae75
 
 name:           tgbotes
 version:        0.1.0.0
@@ -37,18 +37,23 @@ library
       Db.BotDb
       Db.Defaults
       Db.TestDb
+      Db.TgBotMonad
+      Tst
       Web.Run
       Web.Server
       Web.Types
+      Web.W
   other-modules:
       Paths_tgbotes
   hs-source-dirs:
       src
-  default-extensions: NoImplicitPrelude MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
+  default-extensions: NoImplicitPrelude NoStarIsType MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
   ghc-options: -Weverything -Wcompat -Wno-safe -Wno-unused-top-binds -Wno-missing-import-lists -Wno-implicit-prelude -Wno-unsafe -Wno-missing-safe-haskell-mode -Wno-missing-local-signatures -Wno-all-missed-specialisations -optP-Wno-nonportable-include-path
   build-depends:
       aeson
+    , algebra
     , base >=4.7 && <5
+    , bifunctors
     , comonad
     , cond
     , envy
@@ -59,6 +64,7 @@ library
     , hasql-th
     , mtl
     , optparse-applicative
+    , profunctors
     , relude
     , safe
     , safe-exceptions
@@ -78,11 +84,13 @@ executable tgbotes-exe
       Paths_tgbotes
   hs-source-dirs:
       app
-  default-extensions: NoImplicitPrelude MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
+  default-extensions: NoImplicitPrelude NoStarIsType MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
+    , algebra
     , base >=4.7 && <5
+    , bifunctors
     , comonad
     , cond
     , envy
@@ -93,6 +101,7 @@ executable tgbotes-exe
     , hasql-th
     , mtl
     , optparse-applicative
+    , profunctors
     , relude
     , safe
     , safe-exceptions
@@ -114,11 +123,13 @@ test-suite tgbotes-test
       Paths_tgbotes
   hs-source-dirs:
       test
-  default-extensions: NoImplicitPrelude MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
+  default-extensions: NoImplicitPrelude NoStarIsType MultiWayIf LambdaCase ViewPatterns OverloadedStrings NegativeLiterals NumDecimals BinaryLiterals HexFloatLiterals NumericUnderscores PartialTypeSignatures NamedWildCards ApplicativeDo Arrows PostfixOperators TupleSections DuplicateRecordFields NamedFieldPuns RecordWildCards DerivingStrategies EmptyDataDeriving StandaloneDeriving GeneralizedNewtypeDeriving DeriveGeneric DeriveFunctor DeriveAnyClass DerivingVia BangPatterns PatternSynonyms EmptyDataDecls TypeOperators LiberalTypeSynonyms DefaultSignatures GADTs MultiParamTypeClasses FunctionalDependencies KindSignatures DataKinds ScopedTypeVariables TypeApplications InstanceSigs TypeSynonymInstances FlexibleInstances FlexibleContexts ConstrainedClassMethods TypeFamilies ConstraintKinds RankNTypes PolyKinds ImplicitParams AllowAmbiguousTypes QuasiQuotes
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
+    , algebra
     , base >=4.7 && <5
+    , bifunctors
     , comonad
     , cond
     , envy
@@ -129,6 +140,7 @@ test-suite tgbotes-test
     , hasql-th
     , mtl
     , optparse-applicative
+    , profunctors
     , relude
     , safe
     , safe-exceptions

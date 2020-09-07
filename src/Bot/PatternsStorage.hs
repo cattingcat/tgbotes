@@ -8,7 +8,7 @@ import Db.BotDb
 
 tst :: Pool -> Int64 -> IO (Either UsageError [ReplaceModel])
 tst pool channelId = use pool $ do
-  vect <- S.statement channelId retrievePatternsForChannel
+  vect <- S.statement channelId retrievePatternsForChat
   pure $ catMaybesVect (mapToReplaceModel <$> vect)
   where
     mapToReplaceModel :: (Text, Text, Text) -> Maybe ReplaceModel

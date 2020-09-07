@@ -7,16 +7,13 @@ import App.Types
 
 test :: App ()
 test = do
-  connStr <- asks (\MkAppConfig{dbHost, dbPort, dbUser, dbPassword, dbName} -> 
-    C.settings dbHost dbPort dbUser dbPassword dbName)
-    
+  connStr <- asks (\MkAppConfig{..} -> C.settings dbHost dbPort dbUser dbPassword dbName)
   liftIO $ do
     putStrLn "Db.TestDb"
     c <- C.acquire connStr
     case c of
       Right connection -> do
-        res <- S.run (S.statement () getChannels)  connection
+        res <- S.run (S.statement () getChats)  connection
         print res
       Left err -> putStrLn ("Err: " ++ show err)
 
- 

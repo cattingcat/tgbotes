@@ -1,6 +1,6 @@
 module Db.BotDb (
-  retrievePatternsForChannel,
-  getChannels
+  retrievePatternsForChat,
+  getChats
 ) where
 
 import Relude
@@ -22,8 +22,8 @@ divModStatement =
       (($1 :: int8) % ($2 :: int8)) :: int8
   |]
 
-retrievePatternsForChannel :: Statement Int64 (Vector (Text, Text, Text))
-retrievePatternsForChannel =
+retrievePatternsForChat :: Statement Int64 (Vector (Text, Text, Text))
+retrievePatternsForChat =
   [TH.vectorStatement|
     select
         r.strategy    :: text,
@@ -36,8 +36,8 @@ retrievePatternsForChannel =
         where c.telegram_id = ($1 :: int8)
   |]
 
-getChannels :: Statement () (Vector (Int64, Int64))
-getChannels =
+getChats :: Statement () (Vector (Int64, Int64))
+getChats =
   [TH.vectorStatement|
     select
         c.id           :: int8,

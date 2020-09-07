@@ -1,6 +1,8 @@
 #resolver: nightly-2020-09-05
 resolver: lts-16.6
 extra-deps:
+  - algebra-4.3.1
+
   - hasql-th-0.4.0.8
   - telegram-bot-simple-0.3.1
 
