@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e7e8008daa8b9f831f0a67886ecede5abc59f7a56ab417e3155cdfe817bcae75
+-- hash: 04fd33dbee702274b05bdeb832b2ed4ca01cd6e619e80378d3b48582669ccf09
 
 name:           tgbotes
 version:        0.1.0.0
@@ -38,7 +38,6 @@ library
       Db.Defaults
       Db.TestDb
       Db.TgBotMonad
-      Tst
       Web.Run
       Web.Server
       Web.Types

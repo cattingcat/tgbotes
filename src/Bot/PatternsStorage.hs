@@ -11,8 +11,8 @@ tst pool channelId = use pool $ do
   vect <- S.statement channelId retrievePatternsForChat
   pure $ catMaybesVect (mapToReplaceModel <$> vect)
   where
-    mapToReplaceModel :: (Text, Text, Text) -> Maybe ReplaceModel
-    mapToReplaceModel (strat, pat, replacement) =
+    mapToReplaceModel :: (Int64, Text, Text, Text) -> Maybe ReplaceModel
+    mapToReplaceModel (_, strat, pat, replacement) =
        (\s -> ReplaceModel s pat replacement) <$> tryParseStrategy strat
 
 

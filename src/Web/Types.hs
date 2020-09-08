@@ -15,7 +15,8 @@ data User = User
   deriving anyclass ToJSON
 
 data ReplyPattern = ReplyPattern
-  { strategy :: Text
+  { patId :: Int64
+  , strategy :: Text
   , pat :: Text
   , reply :: Text
   }
@@ -26,4 +27,5 @@ data ReplyPattern = ReplyPattern
 type ServerAPI = "users" :> "list-all" :> Get '[JSON] [User]
             :<|> "list-all" :> "users" :> Get '[JSON] [User]
             :<|> "patterns" :> Capture "chatId" Int64 :> Get '[JSON] [ReplyPattern]
+            :<|> "chats" :> Get '[JSON] [Int64]
 --            :<|> Raw

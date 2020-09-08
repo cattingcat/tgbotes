@@ -27,6 +27,7 @@ server :: TgBotStoreMonad m => ServerT ServerAPI m
 server = handlerUser
     :<|> handlerUser
     :<|> handlerPatterns
+    :<|> handleGetChats
 --    :<|> rawHandler
 
 handlerUser ::TgBotStoreMonad m => m [User]
@@ -35,8 +36,13 @@ handlerUser = pure [User "fname" "lname", User "fname2" "lname2"]
 handlerPatterns :: TgBotStoreMonad m => Int64 -> m [ReplyPattern]
 handlerPatterns chatId = do
   vect <- retrievePatternsForChat (ChatId chatId)
-  let patterns = fmap (\(ReplyPat a b c) -> ReplyPattern a b c) vect
+  let patterns = fmap (\(ReplyPat (PatternId i) a b c) -> ReplyPattern i a b c) vect
   pure $ toList patterns
+
+handleGetChats :: TgBotStoreMonad m => m [Int64]
+handleGetChats = do
+  vect <- getChats
+  pure (toList ((\(ChatId i) -> i) <$> vect))
 
 --rawHandler :: Tagged m Application
 --rawHandler = Tagged undefined
